@@ -9,6 +9,7 @@ export interface Project {
 }
 
 export const PROJECTS: Project[] = [
+
   {
     title: "Qatar",
     description:
@@ -53,5 +54,14 @@ export const PROJECTS: Project[] = [
     color: "from-orange-500/20 to-red-900/20",
     liveUrl: "https://www.meandyou.in/",
     image: "/images/meandyou_image.png",
+  },
+    {
+    title: "Rowgistic",
+    description:
+      "Designed and developed a comprehensive cross-platform mobile application for the rowing community, streamlining logistics and event coordination. Features an integrated social networking space for rowers and trainers, real-time boat tracking and event management, and a secure peer-to-peer marketplace facilitating boat trading between owners.",
+    techs: ["React Native", "Firebase Auth", "Firestore", "Material UI", "JavaScript"],
+    color: "from-orange-500/20 to-amber-950/20",
+    liveUrl: "https://rowgistic.com/",
+    image: "/images/rowgistic_image.png",
   },
 ];
