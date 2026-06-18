@@ -7,7 +7,7 @@ export interface CodeLine {
 export const CODE_LINES: CodeLine[] = [
   { indent: 0, text: "const Developer = () => {" },
   { indent: 1, text: 'const [passion, setPassion] = useState("∞");' },
-  { indent: 1, text: 'const skills = ["React", "Next.js", "TypeScript"];' },
+  { indent: 1, text: 'const skills = ["React", "Next.js", "JavaScript", "React Native"];' },
   { indent: 1, text: "" },
   { indent: 1, text: "return (" },
   { indent: 2, text: "<Portfolio>" },

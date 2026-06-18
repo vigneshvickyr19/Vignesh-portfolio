@@ -44,7 +44,7 @@ const CodeHighlight = ({ text }: { text: string }) => {
             </span>
           );
         return (
-          <span key={i} className="text-foreground/80">
+          <span key={i} className="text-zinc-300">
             {part}
           </span>
         );

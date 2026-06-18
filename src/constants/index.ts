@@ -6,3 +6,4 @@ export * from "./projects.constants";
 export * from "./tech-stack.constants";
 export * from "./experience.constants";
 export * from "./contact.constants";
+export * from "./theme.constants";

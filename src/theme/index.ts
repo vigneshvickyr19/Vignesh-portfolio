@@ -8,4 +8,5 @@ export const theme = {
   components: componentStyles,
 };
 
-export type Theme = typeof theme;
+export type ThemeConfig = typeof theme;
+

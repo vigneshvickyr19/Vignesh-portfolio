@@ -5,7 +5,7 @@ export interface AboutStat {
 
 export const ABOUT_STATS: AboutStat[] = [
   { value: "2+", label: "Years Exp." },
-  { value: "6+", label: "Projects" },
+  { value: "10+", label: "Projects" },
   { value: "20+", label: "Technologies" },
   { value: "3", label: "Awards" },
 ];

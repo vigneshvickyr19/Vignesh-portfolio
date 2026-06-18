@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { HiMenuAlt3, HiX } from "react-icons/hi";
+import { Sun, Moon } from "lucide-react";
+import { useThemeContext } from "@/context";
 import { NAV_LINKS } from "@/constants";
 
 // Main navigation with smooth scrolling and sticky behavior
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { theme, toggleTheme } = useThemeContext();
 
   // Monitor scroll progress to add extra glassiness when moving
   useEffect(() => {
@@ -54,28 +57,56 @@ const Navbar = () => {
         </a>
 
         {/* Desktop Navigation */}
-        <ul className="hidden md:flex items-center gap-10">
-          {NAV_LINKS.map((l) => (
-            <li key={l.href}>
-              <a
-                href={l.href}
-                onClick={(e) => handleNavClick(e, l.href)}
-                className="text-xs uppercase tracking-widest font-mono text-muted-foreground hover:text-primary transition-all relative group"
-              >
-                {l.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-primary transition-all group-hover:w-full" />
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div className="hidden md:flex items-center gap-8">
+          <ul className="flex items-center gap-10">
+            {NAV_LINKS.map((l) => (
+              <li key={l.href}>
+                <a
+                  href={l.href}
+                  onClick={(e) => handleNavClick(e, l.href)}
+                  className="text-xs uppercase tracking-widest font-mono text-muted-foreground hover:text-primary transition-all relative group"
+                >
+                  {l.label}
+                  <span className="absolute -bottom-1 left-0 w-0 h-[1.5px] bg-primary transition-all group-hover:w-full" />
+                </a>
+              </li>
+            ))}
+          </ul>
 
-        {/* Mobile menu toggle */}
-        <button
-          onClick={() => setOpen(!open)}
-          className="md:hidden text-foreground text-3xl focus:outline-none p-2 hover:bg-primary/10 rounded-full transition-colors"
-        >
-          {open ? <HiX className="text-primary" /> : <HiMenuAlt3 />}
-        </button>
+          <motion.button
+            onClick={toggleTheme}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className="p-2.5 rounded-full bg-secondary/80 hover:bg-secondary border border-border text-foreground transition-all cursor-pointer shadow-sm flex items-center justify-center"
+            aria-label="Toggle Theme"
+          >
+            {theme === "light" ? (
+              <Moon size={18} className="text-foreground transition-transform hover:-rotate-12" />
+            ) : (
+              <Sun size={18} className="text-primary transition-transform hover:rotate-45" />
+            )}
+          </motion.button>
+        </div>
+
+        {/* Mobile action bar */}
+        <div className="flex items-center gap-4 md:hidden">
+          <motion.button
+            onClick={toggleTheme}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className="p-2.5 rounded-full bg-secondary/80 hover:bg-secondary border border-border text-foreground transition-all cursor-pointer flex items-center justify-center"
+            aria-label="Toggle Theme"
+          >
+            {theme === "light" ? <Moon size={18} /> : <Sun size={18} className="text-primary" />}
+          </motion.button>
+
+          <button
+            onClick={() => setOpen(!open)}
+            className="text-foreground text-3xl focus:outline-none p-2 hover:bg-primary/10 rounded-full transition-colors"
+          >
+            {open ? <HiX className="text-primary" /> : <HiMenuAlt3 />}
+          </button>
+        </div>
       </div>
 
       {/* Animated Mobile Menu */}

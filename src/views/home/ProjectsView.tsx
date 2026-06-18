@@ -26,7 +26,7 @@ const ProjectCard = ({
       transition={{ delay: 0.1 + i * 0.12, duration: 0.7, ease: [0.21, 0.45, 0.32, 0.9] }}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
-      className="glass rounded-xl overflow-hidden group relative h-full flex flex-col border border-primary/5"
+      className="glass rounded-2xl overflow-hidden group relative h-full flex flex-col border border-border/60 hover:border-primary/30 shadow-md hover:shadow-xl transition-all duration-300 bg-card/40"
     >
       {/* Background Glow */}
       <motion.div
@@ -37,19 +37,19 @@ const ProjectCard = ({
       {/* Image Header with Parallax Zoom */}
       <div className="h-60 w-full overflow-hidden relative">
         <motion.div
-          animate={isHovered ? { scale: 1.1, y: -5 } : { scale: 1, y: 0 }}
-          transition={{ duration: 1.2, ease: "circOut" }}
+          animate={isHovered ? { scale: 1.05, y: -2 } : { scale: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
           className="h-full w-full"
         >
           <img 
             src={project.image} 
             alt={project.title} 
-            className="w-full h-full object-cover grayscale-[0.2] transition-all duration-700" 
+            className="w-full h-full object-cover transition-all duration-700" 
           />
         </motion.div>
         
         {/* Overlays */}
-        <div className={`absolute inset-0 bg-gradient-to-tr ${project.color} mix-blend-multiply opacity-60 transition-opacity duration-500`} />
+        <div className={`absolute inset-0 bg-gradient-to-tr ${project.color} mix-blend-multiply opacity-30 transition-opacity duration-500`} />
         <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-90" />
 
         {/* Floating Icons Actions */}
@@ -79,26 +79,30 @@ const ProjectCard = ({
       </div>
 
       <div className="p-6 relative flex flex-col flex-grow">
-        <div className="flex items-center justify-between mb-4">
+        <div className="flex items-center justify-between mb-3">
           <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors duration-300">
             {project.title}
           </h3>
-          <ArrowUpRight size={16} className="text-muted-foreground/40 group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
+          <ArrowUpRight size={18} className="text-muted-foreground/40 group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
         </div>
 
-        <p className="text-sm text-muted-foreground mb-8 leading-relaxed line-clamp-3 font-medium">
+        <p className="text-sm text-muted-foreground mb-8 leading-relaxed line-clamp-3 font-normal">
           {project.description}
         </p>
 
-        <div className="mt-auto pt-6 border-t border-primary/10 flex items-center justify-between">
+        <div className="mt-auto pt-6 border-t border-border/80 flex items-center justify-between">
           <div className="flex -space-x-2">
-            {project.techs.slice(0, 4).map((tech, techIndex) => (
-               <div key={tech} className="w-7 h-7 rounded-full bg-secondary border-2 border-background flex items-center justify-center text-[8px] font-bold text-primary shadow-sm" title={tech}>
-                 {tech.charAt(0)}
+            {project.techs.slice(0, 4).map((tech) => (
+               <div 
+                 key={tech} 
+                 className="w-8 h-8 rounded-full bg-secondary border-2 border-background flex items-center justify-center text-[9px] font-extrabold text-primary shadow-sm hover:scale-110 hover:z-20 transition-all cursor-default" 
+                 title={tech}
+               >
+                 {tech.substring(0, 2).toUpperCase()}
                </div>
             ))}
             {project.techs.length > 4 && (
-               <div className="w-7 h-7 rounded-full bg-secondary border-2 border-background flex items-center justify-center text-[8px] font-bold text-primary">
+               <div className="w-8 h-8 rounded-full bg-secondary border-2 border-background flex items-center justify-center text-[9px] font-extrabold text-primary shadow-sm">
                  +{project.techs.length - 4}
                </div>
             )}
@@ -108,7 +112,7 @@ const ProjectCard = ({
             onClick={() => onOpenModal(project)}
             className="text-[10px] uppercase font-mono tracking-widest font-bold text-primary hover:text-foreground transition-colors flex items-center gap-1.5"
           >
-            See More Detail <Plus size={12} strokeWidth={3} />
+            See Details <Plus size={12} strokeWidth={3} />
           </button>
         </div>
 
