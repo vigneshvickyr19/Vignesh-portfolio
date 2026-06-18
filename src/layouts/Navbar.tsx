@@ -53,7 +53,15 @@ const Navbar = () => {
           onClick={(e) => handleNavClick(e, "#home")}
           className="text-xl font-bold font-mono tracking-tighter text-gradient group"
         >
-          <span className="inline-block transition-transform group-hover:rotate-12 group-hover:scale-110">{"<VR />"}</span>
+          <motion.span 
+            initial={{ rotate: -180, scale: 0, opacity: 0 }}
+            animate={{ rotate: 0, scale: 1, opacity: 1 }}
+            transition={{ type: "spring", stiffness: 200, damping: 15, delay: 0.2 }}
+            className="inline-block cursor-pointer"
+            whileHover={{ scale: 1.15, rotate: 12 }}
+          >
+            {"<VR />"}
+          </motion.span>
         </a>
 
         {/* Desktop Navigation */}

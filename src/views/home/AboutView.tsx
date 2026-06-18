@@ -1,6 +1,7 @@
 import { ABOUT_BIO, ABOUT_STATS } from "@/constants";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { CountUp } from "@/components/shared";
 
 const AboutView = () => {
   const ref = useRef(null);
@@ -37,7 +38,7 @@ const AboutView = () => {
                   className="p-5 rounded-xl bg-secondary/40 border border-primary/5 hover:border-primary/20 hover:bg-secondary/60 transition-all text-center flex flex-col justify-center items-center shadow-sm"
                 >
                   <div className="text-3xl md:text-4xl font-extrabold text-primary mb-1">
-                    {stat.value}
+                    <CountUp value={stat.value} inView={inView} />
                   </div>
                   <div className="text-xs font-mono uppercase tracking-wider text-muted-foreground">{stat.label}</div>
                 </motion.div>

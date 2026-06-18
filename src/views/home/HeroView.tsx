@@ -5,6 +5,30 @@ import { CodeHighlight } from "@/components/shared";
 
 // Hero showing landing content and a terminal-style code card
 const HeroView = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.04,
+        delayChildren: 0.1,
+      },
+    },
+  } as const;
+
+  const letterVariants = {
+    hidden: { opacity: 0, y: 40 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "spring",
+        stiffness: 150,
+        damping: 10,
+      },
+    },
+  } as const;
+
   return (
     <section className="min-h-screen flex items-center section-padding pt-28 relative overflow-hidden bg-background">
       {/* Decorative Grid Pattern */}
@@ -16,34 +40,68 @@ const HeroView = () => {
 
       <div className="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center relative z-10">
         <motion.div
-          initial={{ opacity: 0, x: -40 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
+          initial="hidden"
+          animate="visible"
+          className="flex flex-col justify-center"
         >
           <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2 }}
+            variants={letterVariants}
             className="text-primary font-mono text-sm mb-4 tracking-wider uppercase font-semibold"
           >
             {HERO_CONTENT.greeting}
           </motion.p>
 
-          <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-4 tracking-tight">
-            {HERO_CONTENT.name} <span className="text-gradient">{HERO_CONTENT.nameHighlight}</span>
+          <h1 className="text-5xl md:text-7xl font-bold leading-tight mb-4 tracking-tight flex flex-wrap gap-x-3">
+            <motion.span
+              variants={containerVariants}
+              className="inline-block"
+            >
+              {HERO_CONTENT.name.split("").map((char, index) => (
+                <motion.span
+                  key={index}
+                  variants={letterVariants}
+                  className="inline-block hover:text-primary transition-colors duration-200 cursor-default"
+                >
+                  {char}
+                </motion.span>
+              ))}
+            </motion.span>
+            <motion.span
+              variants={containerVariants}
+              className="text-gradient inline-block"
+            >
+              {HERO_CONTENT.nameHighlight.split("").map((char, index) => (
+                <motion.span
+                  key={index}
+                  variants={letterVariants}
+                  className="inline-block hover:text-orange-400 transition-colors duration-200 cursor-default"
+                >
+                  {char}
+                </motion.span>
+              ))}
+            </motion.span>
           </h1>
 
-          <p className="text-xl md:text-2xl text-muted-foreground mb-4 max-w-lg">
+          <motion.p 
+            variants={letterVariants}
+            className="text-xl md:text-2xl text-muted-foreground mb-4 max-w-lg"
+          >
             {HERO_CONTENT.titlePrefix}{" "}
             <span className="text-foreground font-semibold">{HERO_CONTENT.titleTech1}</span> &{" "}
             <span className="text-foreground font-semibold">{HERO_CONTENT.titleTech2}</span> Developer
-          </p>
+          </motion.p>
 
-          <p className="text-sm md:text-base text-muted-foreground mb-8 max-w-lg leading-relaxed font-normal">
+          <motion.p 
+            variants={letterVariants}
+            className="text-sm md:text-base text-muted-foreground mb-8 max-w-lg leading-relaxed font-normal"
+          >
             {HERO_CONTENT.subtitle}
-          </p>
+          </motion.p>
 
-          <div className="flex items-center gap-4 flex-wrap">
+          <motion.div 
+            variants={letterVariants}
+            className="flex items-center gap-4 flex-wrap"
+          >
             <motion.a
               href="#about"
               whileHover={{ scale: 1.03, y: -2 }}
@@ -64,7 +122,7 @@ const HeroView = () => {
               Resume
               <Download size={16} />
             </motion.a>
-          </div>
+          </motion.div>
         </motion.div>
 
         {/* Right - Code UI */}
