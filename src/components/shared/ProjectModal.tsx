@@ -106,22 +106,24 @@ const ProjectModal: React.FC<ProjectModalProps> = ({ project, isOpen, onClose })
                     </div>
                   </section>
 
-                  <div className="pt-4">
-                    <motion.a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      className="flex items-center justify-between w-full p-4 rounded-xl bg-primary text-primary-foreground font-bold hover:brightness-110 shadow-lg shadow-primary/20 transition-all text-sm group"
-                    >
-                      <span className="flex items-center gap-2">
-                         <Globe size={18} />
-                         View Live Website
-                      </span>
-                      <ExternalLink size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-                    </motion.a>
-                  </div>
+                  {project.liveUrl && (
+                    <div className="pt-4">
+                      <motion.a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                        className="flex items-center justify-between w-full p-4 rounded-xl bg-primary text-primary-foreground font-bold hover:brightness-110 shadow-lg shadow-primary/20 transition-all text-sm group"
+                      >
+                        <span className="flex items-center gap-2">
+                           <Globe size={18} />
+                           View Live Website
+                        </span>
+                        <ExternalLink size={18} className="group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
+                      </motion.a>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>

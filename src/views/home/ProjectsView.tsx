@@ -54,17 +54,19 @@ const ProjectCard = ({
 
         {/* Floating Icons Actions */}
         <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-30">
-          <motion.a
-            href={project.liveUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ scale: 1.15 }}
-            whileTap={{ scale: 0.95 }}
-            className="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center shadow-xl glow-box border border-white/20"
-            title="View Live Site"
-          >
-            <Globe size={22} />
-          </motion.a>
+          {project.liveUrl && (
+            <motion.a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              whileHover={{ scale: 1.15 }}
+              whileTap={{ scale: 0.95 }}
+              className="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center shadow-xl glow-box border border-white/20"
+              title="View Live Site"
+            >
+              <Globe size={22} />
+            </motion.a>
+          )}
           
           <motion.button
             onClick={() => onOpenModal(project)}

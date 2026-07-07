@@ -4,7 +4,7 @@ export interface Project {
   techs: string[];
   /** Tailwind gradient classes for the card backdrop/overlay */
   color: string;
-  liveUrl: string;
+  liveUrl?: string;
   image: string;
 }
 
@@ -64,4 +64,21 @@ export const PROJECTS: Project[] = [
     liveUrl: "https://rowgistic.com/",
     image: "/images/rowgistic_image.png",
   },
+  {
+    title: "Social Media Application (React Native)",
+    description:
+      "Developed a feature-rich social media mobile application using React Native with a modular and reusable component architecture. Built core social networking features including posts, stories, reels, articles, likes, comments, shares, user profiles, real-time chat, and an AI-powered chatbot with first-message reply suggestions. Integrated REST APIs, push notifications, deep linking, and i18n. Impact: Delivered a scalable social networking platform that increased user engagement through AI-powered conversations, multilingual support, real-time messaging, and interactive content sharing.",
+    techs: ["React Native", "TypeScript", "REST APIs", "i18n", "AI Chatbot", "Framer Motion"],
+    color: "from-fuchsia-500/20 to-violet-950/20",
+    image: "/images/social_media_app.png",
+  },
+  {
+    title: "Cricket & Social Media Application (React Native)",
+    description:
+      "Developed a cricket-focused social networking mobile application using React Native with a scalable and reusable component architecture. Built live match tracking, tournament management, score updates, player statistics, news publishing, reels, stories, posts, real-time chat, push notifications, and community engagement features. Integrated REST APIs for live scores, match management, and dynamic content delivery. Impact: Delivered an engaging cricket community platform that enhanced user participation through live updates, social networking features, and real-time communication.",
+    techs: ["React Native", "TypeScript", "REST APIs", "Redux", "WebSockets"],
+    color: "from-emerald-500/20 to-teal-950/20",
+    image: "/images/cricket_app.png",
+  },
 ];
+
